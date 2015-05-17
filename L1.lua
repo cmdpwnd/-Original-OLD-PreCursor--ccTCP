@@ -1,3 +1,29 @@
+--[[License
+
+The MIT License (MIT)
+
+Copyright (c) 2015 ccTCP Team
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+--]]
+
 local sides = {"top","bottom","left","right","back","front"}
 local sidesTable = {top = 0,bottom = 1,left = 2,right = 3,back = 4,front = 5}
 local modem = {}
@@ -17,11 +43,11 @@ function wrap()
 end
 
 function intOpen(int)
-	modem[sides[int]].open(channel)
+	modem[int].open(channel)
 end
 
 function intClose(int)
-	modem[sides[int]].close()
+	modem[int].close()
 end
 
 function send(int,data)
@@ -41,8 +67,8 @@ function receive()
 		if event[3] == channel then
 			local destMac = string.sub(event[5],1,6)
 			local sendMac = string.sub(event[5],7,12)
-			if destMac == getMac(event[2]) then
-				return event[5], event[4]
+			if destMac == Ethernet.getMac(event[2]) then
+				return event[5], event[2]
 			end
 		end
 	end

@@ -47,7 +47,7 @@ function intOpen(int)
 end
 
 function intClose(int)
-	modem[int].close()
+	modem[int].close(channel)
 end
 
 function send(int,data)
