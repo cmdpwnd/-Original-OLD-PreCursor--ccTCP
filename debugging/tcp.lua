@@ -53,11 +53,11 @@ end
 ---
 
 local macTable = {}
-local standFrame_Temp = {preamble = "",dstMac = "",srcMac = "",packet = "" or data = "",crc()}
-local QFrame_Temp = {preamble = "",dstMac = "",srcMac = "",vlan = "",packet = "" or data = "",crc()}
+local standFrame_Temp = {preamble = "",dstMac = "",srcMac = "",packet = "" or data = ""}
+local QFrame_Temp = {preamble = "",dstMac = "",srcMac = "",vlan = "",packet = "" or data = ""}
 
-standFrame = {preamble = "",dstMac = "",srcMac = "",packet = "" or data = "",crc()}
-QFrame = {preamble = "",dstMac = "",srcMac = "",vlan = "",packet = "" or data = "",crc()}
+standFrame = {preamble = "",dstMac = "",srcMac = "",packet = "" or data = ""}
+QFrame = {preamble = "",dstMac = "",srcMac = "",vlan = "",packet = "" or data = ""}
 
 function macBind(...)
 --[[
